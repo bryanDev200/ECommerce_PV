@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EntityConfig\" />
+    <Compile Remove="EntityConfig\**" />
+    <EmbeddedResource Remove="EntityConfig\**" />
+    <None Remove="EntityConfig\**" />
   </ItemGroup>
 
 </Project>

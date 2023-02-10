@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce_EntityL.Models
 {
-    public  class ProductBrands
+    public  class ProductBrand
     {
         public int BrandId { get; set; }
         public int ProductId { get; set; }

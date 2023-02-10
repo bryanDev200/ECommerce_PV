@@ -18,5 +18,6 @@ namespace ECommerce_EntityL.Models
         public decimal TotalAmount { get; set; }
         public Transaction Transaction { get; set; }
         public User User { get; set; }
+        public HashSet<OrderDetail> Details { get; set; }
     }
 }
