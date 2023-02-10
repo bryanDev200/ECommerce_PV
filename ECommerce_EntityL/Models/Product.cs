@@ -14,6 +14,8 @@ namespace ECommerce_EntityL.Models
         public decimal Price { get; set; }
         public int Stock{ get; set; }
         public int SubCategoryId { get; set; }
+        public HashSet<Image> Images { get; set; }
+        public Subcategory Subcategory { get; set; }
         public DateTime RegistrationDate { get; set;}
         public HashSet<OrderDetail> OrderDetails { get; set; }  
     }
