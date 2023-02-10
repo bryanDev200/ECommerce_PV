@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,18 +19,20 @@ namespace ECommerce_DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         public DbSet<User> Users { get; set; }
 
         public DbSet<Brand> Brands { get; set; }
 
-        public DbSet<ProductBrands> ProductBrands { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
 
-        public DbSet<Products> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public DbSet<Images> Images { get; set; }
+        public DbSet<Image> Images { get; set; }
 
-        public DbSet<Categories> Categories{ get; set; }
+        public DbSet<Category> Categories{ get; set; }
     }
 }
