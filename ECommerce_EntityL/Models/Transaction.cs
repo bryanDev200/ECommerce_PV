@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce_EntityL.Models
 {
-    public class Categories
+    public class Transaction
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime RegistrationDate { get; set; }
-
+        public HashSet<Order> Orders { get; set; }
     }
 }

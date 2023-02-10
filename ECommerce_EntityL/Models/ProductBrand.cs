@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_EntityL.Models
 {
-   public class Images
+    public  class ProductBrand
     {
-        public int Id { get; set; }
+        public int BrandId { get; set; }
         public int ProductId { get; set; }
-
-        public string Route { get; set; }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ECommerce_EntityL.Models
 {
-    public class Subcategories
+    public class Permission
     {
         public int Id { get; set; }
-        public int CategoryId{ get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public string Route { get; set; }
+        public bool Active { get; set; }
+        public HashSet<Role> Roles { get; set;}
     }
 }
