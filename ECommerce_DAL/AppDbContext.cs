@@ -21,5 +21,15 @@ namespace ECommerce_DAL
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
+
+        public DbSet<ProductBrands> ProductBrands { get; set; }
+
+        public DbSet<Products> Products { get; set; }
+
+        public DbSet<Images> Images { get; set; }
+
+        public DbSet<Categories> Categories{ get; set; }
     }
 }
