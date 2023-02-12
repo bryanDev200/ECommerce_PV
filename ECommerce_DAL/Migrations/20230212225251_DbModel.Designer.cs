@@ -4,6 +4,7 @@ using ECommerce_DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceDAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230212225251_DbModel")]
+    partial class DbModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -517,6 +520,36 @@ namespace ECommerceDAL.Migrations
                     b.ToTable("tb_user_has_role", (string)null);
                 });
 
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.Property<int>("PermissionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RolesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PermissionsId", "RolesId");
+
+                    b.HasIndex("RolesId");
+
+                    b.ToTable("PermissionRole");
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<int>("RolesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RolesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("RoleUser");
+                });
+
             modelBuilder.Entity("ECommerce_EntityL.Models.District", b =>
                 {
                     b.HasOne("ECommerce_EntityL.Models.Province", "Province")
@@ -629,13 +662,13 @@ namespace ECommerceDAL.Migrations
             modelBuilder.Entity("ECommerce_EntityL.Models.RolePermission", b =>
                 {
                     b.HasOne("ECommerce_EntityL.Models.Permission", "Permission")
-                        .WithMany("Roles")
+                        .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ECommerce_EntityL.Models.Role", "Role")
-                        .WithMany("Permissions")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -659,13 +692,13 @@ namespace ECommerceDAL.Migrations
             modelBuilder.Entity("ECommerce_EntityL.Models.UserRole", b =>
                 {
                     b.HasOne("ECommerce_EntityL.Models.Role", "Role")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ECommerce_EntityL.Models.User", "User")
-                        .WithMany("Roles")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -673,6 +706,36 @@ namespace ECommerceDAL.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.HasOne("ECommerce_EntityL.Models.Permission", null)
+                        .WithMany()
+                        .HasForeignKey("PermissionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerce_EntityL.Models.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.HasOne("ECommerce_EntityL.Models.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerce_EntityL.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ECommerce_EntityL.Models.Brand", b =>
@@ -690,11 +753,6 @@ namespace ECommerceDAL.Migrations
                     b.Navigation("Details");
                 });
 
-            modelBuilder.Entity("ECommerce_EntityL.Models.Permission", b =>
-                {
-                    b.Navigation("Roles");
-                });
-
             modelBuilder.Entity("ECommerce_EntityL.Models.Product", b =>
                 {
                     b.Navigation("Images");
@@ -704,21 +762,9 @@ namespace ECommerceDAL.Migrations
                     b.Navigation("ProductsBrand");
                 });
 
-            modelBuilder.Entity("ECommerce_EntityL.Models.Role", b =>
-                {
-                    b.Navigation("Permissions");
-
-                    b.Navigation("Users");
-                });
-
             modelBuilder.Entity("ECommerce_EntityL.Models.Transaction", b =>
                 {
                     b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("ECommerce_EntityL.Models.User", b =>
-                {
-                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }
