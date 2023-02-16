@@ -11,7 +11,7 @@ namespace ECommerce_EntityL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
-        public HashSet<User> Users { get; set; }
-        public HashSet<Permission> Permissions { get; set; }
+        public HashSet<UserRole> Users { get; set; }
+        public HashSet<RolePermission> Permissions { get; set; }
     }
 }

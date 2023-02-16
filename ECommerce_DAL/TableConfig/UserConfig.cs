@@ -13,7 +13,49 @@ namespace ECommerce_DAL.TableConfig
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable(name: "tb_users");
+
+            builder.HasKey(x => x.Id)
+                .HasName("user_id");
+
+            builder.Property(prop => prop.Name)
+                .HasColumnName("names")
+                .HasMaxLength(30)
+                .IsRequired();
+
+            builder.Property(prop => prop.LastNames)
+                .HasColumnName("last_names")
+                .HasMaxLength(40)
+                .IsRequired();
+
+            builder.Property(prop => prop.Dni)
+                .HasColumnName("dni")
+                .HasMaxLength(8)
+                .IsRequired();
+
+            builder.Property(prop => prop.CellPhone)
+                .HasColumnName("cell_phone")
+                .HasMaxLength(9)
+                .IsRequired();
+
+            builder.Property(prop => prop.Email)
+                .HasColumnName("email")
+                .HasMaxLength(30)
+                .IsRequired();
+
+            builder.Property(prop => prop.UserName)
+                .HasColumnName("username")
+                .HasMaxLength(20)
+                .IsRequired();
+
+            builder.Property(prop => prop.Password)
+                .HasColumnName("password")
+                .IsRequired();
+
+            builder.Property(prop => prop.RegisterDate)
+                .HasColumnName("register_date")
+                .HasColumnType("date")
+                .IsRequired();
         }
     }
 }
