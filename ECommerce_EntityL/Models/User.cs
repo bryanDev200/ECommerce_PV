@@ -11,12 +11,12 @@ namespace ECommerce_EntityL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastNames { get; set; }
-        public string Dni { get; set; }
-        public string CellPhone { get; set; }
+        public int Dni { get; set; }
+        public int CellPhone { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public DateTime RegisterDate { get; set; }
-        public HashSet<Role> Roles { get; set; }
+        public HashSet<UserRole> Roles { get; set; }
     }
 }

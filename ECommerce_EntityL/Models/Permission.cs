@@ -12,6 +12,6 @@ namespace ECommerce_EntityL.Models
         public string Name { get; set; }
         public string Route { get; set; }
         public bool Active { get; set; }
-        public HashSet<Role> Roles { get; set;}
+        public HashSet<RolePermission> Roles { get; set;}
     }
 }
