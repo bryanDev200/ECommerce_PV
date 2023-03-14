@@ -1,6 +1,8 @@
 using ECommerce_DAL;
 using ECommerce_DAL.Implementations;
 using ECommerce_DAL.Interfaces;
+using ECommerce
+using ECommerce_DAL.SercvicesImpl;
 using ECommerce_EntityL.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ICrudRepository<User>, UserDA>();
-
+builder.Services.AddSingleton<ICategory, CategoryDA>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
