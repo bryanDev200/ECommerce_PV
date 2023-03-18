@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,11 @@
   <ItemGroup>
     <ProjectReference Include="..\ECommerce_DAL\ECommerce_DAL.csproj" />
     <ProjectReference Include="..\ECommerce_EntityL\ECommerce_EntityL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOS\DtosInputs\" />
+    <Folder Include="DTOS\DtosOutputs\" />
   </ItemGroup>
 
 </Project>
